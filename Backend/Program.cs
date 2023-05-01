@@ -1,5 +1,6 @@
 
 using Backend.Contexts;
+using Backend.Filters;
 using Backend.Models.Entities;
 using Backend.Repositories;
 using Backend.Repository;
@@ -18,11 +19,13 @@ namespace Backend
             builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
             builder.Services.AddScoped<ProductRepository>();
             builder.Services.AddScoped<MessageRepository>();
+            builder.Services.AddScoped<ApiKey>();
+            
 
             var app = builder.Build();
             app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
-
+            
             app.UseSwagger();
             app.UseSwaggerUI();
             app.UseHttpsRedirection();

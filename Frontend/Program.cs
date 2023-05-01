@@ -1,3 +1,5 @@
+using Frontend.Service;
+
 namespace Frontend
 {
     public class Program
@@ -7,7 +9,9 @@ namespace Frontend
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddSingleton<HttpClient>();
+            builder.Services.AddScoped<ProductService>();
+            builder.Services.AddScoped<ContactsService>();
 
 
 

@@ -40,12 +40,15 @@ namespace Backend.Repository
             return entity;
         }
 
-        //public async Task DeleteAsync(ProductEntity entity)
-        //{
-        //    _context.Products.Remove(entity);
-        //    await _context.SaveChangesAsync();
+        public async Task<ProductResponse> GetByIdAsync(string id)
+        {
 
-        //}
+            var products = await _context.Products.ToListAsync();
+
+            var response = products.Where(x => x.Id.ToString().ToLower() == id.ToLower()).FirstOrDefault();
+
+            return response;
+        }
 
         public async Task<IEnumerable<ProductResponse>> GetByTagAsync(string tag)
         {

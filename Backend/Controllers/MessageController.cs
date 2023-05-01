@@ -1,10 +1,12 @@
-﻿using Backend.Models.DTO;
+﻿using Backend.Filters;
+using Backend.Models.DTO;
 using Backend.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
 {
+    [ApiKey]
     [Route("api/[controller]")]
     [ApiController]
     public class MessageController : ControllerBase
